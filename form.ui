@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>39</x>
@@ -44,6 +44,40 @@
          </item>
          <item>
           <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="timeLabel">
+           <property name="midLineWidth">
+            <number>3</number>
+           </property>
+           <property name="text">
+            <string>Time</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="timeEdit">
+           <property name="placeholderText">
+            <string>Please enter time</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -108,9 +142,9 @@
      <item>
       <layout class="QGridLayout" name="gridLayout">
        <item row="1" column="2">
-        <widget class="QPushButton" name="disconnectButton">
+        <widget class="QPushButton" name="downloadButton">
          <property name="text">
-          <string>Disconnect</string>
+          <string>Download File</string>
          </property>
         </widget>
        </item>
@@ -140,13 +174,6 @@
           </size>
          </property>
         </spacer>
-       </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="connectButton">
-         <property name="text">
-          <string>Connect</string>
-         </property>
-        </widget>
        </item>
       </layout>
      </item>
