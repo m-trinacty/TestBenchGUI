@@ -36,7 +36,7 @@ class Client(QObject):
         self.client.send(bytes(msg,self.FORMAT))    
 
     
-    def readIncome(self):
+    def readIncome(self,ui):
         
 
         while self.connect:
@@ -45,4 +45,5 @@ class Client(QObject):
 
             serverMsg= data.decode(self.FORMAT)
             serverMsg = serverMsg.split('\0')
+            ui.logText.append(serverMsg[0])
             print(f"[SERVER] {serverMsg[0]}")
