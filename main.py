@@ -7,6 +7,7 @@ from PyQt5.QtCore import *# Qt, QPoint, QRect, QObject, QEvent, pyqtSignal, pyqt
 import sys
 import socket
 from client import Client
+from sftp import SFTPClient
 from threading import *
 
 class Ui(QtWidgets.QMainWindow):
@@ -36,9 +37,9 @@ class Ui(QtWidgets.QMainWindow):
         self.stopButton.setStyleSheet("background-color : red")
         self.startButton.clicked.connect(lambda: self.startButtonClicked())
         self.startButton.setStyleSheet("background-color : green")
+        self.downloadButton.clicked.connect(lambda: self.downloadButtonClicked())
 
     def stopButtonClicked(self):
-        print("Stop Button cliecked")
         self.cl.sendMessage("STOP")
     def startButtonClicked(self):
         if self.speedEdit.text().isdigit() and self.timeEdit.text().isdigit():
@@ -67,6 +68,12 @@ class Ui(QtWidgets.QMainWindow):
             print('Window closed')
         else:
             event.ignore()
+    
+    def downloadButtonClicked(self):
+        self.sftp = SFTPClient()
+        self.path = QFileDialog.getSaveFileName(self, 'Save File',"testbench.log")
+        self.sftp.getFile(self.path[0])
+        self.sftp.close()
 
 
 

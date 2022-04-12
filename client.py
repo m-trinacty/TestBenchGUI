@@ -46,4 +46,7 @@ class Client(QObject):
             serverMsg= data.decode(self.FORMAT)
             serverMsg = serverMsg.split('\0')
             ui.logText.append(serverMsg[0])
+            if serverMsg[0]=="FINISHED":
+                self.sendMessage("STOP")
+
             print(f"[SERVER] {serverMsg[0]}")
