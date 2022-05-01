@@ -19,10 +19,18 @@ class Ui(QtWidgets.QMainWindow):
         self.setLineEdits()
         self.createStatusBar()
         self.show()
-        self.cl = Client()
-        self.cl.createClient()
-        self.thread()
-        self.messageArray=[]
+        self.connected=False
+        try:
+            self.cl = Client()
+            self.cl.createClient()
+            self.thread()
+            self.logText.verticalScrollBar().setValue(
+            self.logText.verticalScrollBar().maximum())
+            self.messageArray=[]
+            self.connected=True
+        except ConnectionRefusedError:
+            self.connected=False
+            
         quit = QAction("Quit", self)
         quit.triggered.connect(self.closeEvent)
 
@@ -80,4 +88,7 @@ class Ui(QtWidgets.QMainWindow):
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = Ui()
-    app.exec_()
+    if window.connected:
+        app.exec_()
+    else:
+        QMessageBox.critical(window,'Connection not available', "Check connection to testbench", QMessageBox.Ok)
