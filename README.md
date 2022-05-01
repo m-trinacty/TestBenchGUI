@@ -7,6 +7,8 @@ Second parameter is timelength of spin, whic is set in seconds.
 
 WARNING testbench will turn into starting position to where is inductive sensor placed at startup and before every spinsession start, dont stand in the way of arms of testbench. Use emergency stop to get out of way. Then release the emergency stop WARNING
 
+![alt text](https://github.com/m-trinacty/TestBenchGUI/blob/main/client.png?raw=true)
+
 
 ### What is this repository for? ###
 
